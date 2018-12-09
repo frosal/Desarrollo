@@ -1,0 +1,33 @@
+<form class="form-inline">
+        <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%;">
+        <button class="btn btn-outline-primary" (click)="searchText=''">X</button>
+        <a class="btn btn-primary float-md-right" routerLink="/addmaterial">nuevo</a>
+      </form>
+      <table class="table table-sm">
+        <thead>
+          <th>Marca</th>
+          <th>Prenda</th>
+          <th>Deporte</th>
+          <th>Talla</th>
+          <th>Persona</th>
+          <th>Precio</th>
+          <th></th>
+        </thead>
+        <ng-container *ngFor="let material of materialArray">
+          <tr class="table-dark" *ngIf="filterCondition(material)">
+            <td>{{material.marca}}</td>
+            <td>{{material.prenda}}</td>
+              <td>{{material.deporte}}</td>
+              <td>{{material.talla}}</td>
+              <td>{{material.persona}}</td>
+              <td>{{material.precio}}</td>
+              <td>
+                <button class="btn btn-outline-info"  routerLink="/editmaterial/{{material.$key}}" (click)="materialService.populateForm(material)">Editar</button>
+                <button class="btn btn-outline-danger" (click)="onDelete(material.$key)">Eliminar</button>
+              </td>
+          </tr>
+        </ng-container>
+      </table>
+      <div class="alert alert-danger" *ngIf="showDeletedMessage">
+ Elemento eliminado
+      </div>

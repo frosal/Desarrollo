@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset 2">
+    <h2>Añadir Material</h2>
+    <a class="btn btn-primary float-md-right" routerLink="/material">Regresar al listado</a>
+    <br>
+    <form [formGroup]="this.materialService.form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="$key">
+      <div class="form-group">
+        <label>Marca</label>
+        <input formControlName="marca" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.marca.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.marca.errors">
+          <label *ngIf="formControls.marca.errors.required">Campo obligatorio.</label>
+          <label *ngIf="formControls.marca.errors.minlength">Demasiado corto.</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Prenda</label>
+        <input formControlName="prenda" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.prenda.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.prenda.errors">
+          Campo obligatorio.</div>
+      </div>
+      <div class="form-group">
+        <label>Deporte</label>
+        <input formControlName="deporte" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.deporte.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.deporte.errors">
+          Campo obligatorio.</div>
+      </div>
+      <div class="form-group">
+        <label>Talla</label>
+        <input formControlName="talla" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.talla.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.talla.errors">
+          Campo obligatorio.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Persona</label>
+        <input formControlName="persona" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.persona.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.persona.errors">
+          Campo obligatorio.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Precio</label>
+        <input formControlName="precio" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.precio.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.precio.errors">
+          Campo obligatorio.</div>
+      </div>
+
+      <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+
+
+
+    </form>
+    <div class="alert alert-info" *ngIf="showSuccessMessage">
+      Añadido Correctamente.
+    </div>
+  </div>
+</div>
